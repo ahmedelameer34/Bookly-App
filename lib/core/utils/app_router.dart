@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../Features/Splash/presentation/views/splash_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/home/presentation/views/widgets/book_details_view.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';
@@ -22,10 +23,10 @@ abstract class AppRouter {
         path: kHomeView,
         builder: (context, state) => const HomeView(),
       ),
-      //   GoRoute(
-      //   path: kBookDetailsView,
-      //    builder: (context, state) => const BookDetailsView(),
-      //  ),
+      GoRoute(
+        path: kBookDetailsView,
+        builder: (context, state) => const BookDetailsView(),
+      ),
     ],
   );
 }
