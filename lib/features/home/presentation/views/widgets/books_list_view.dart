@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookly_app/features/home/presentation/views/widgets/list_view_item.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/list_view_item_view.dart';
 
 class BooksListView extends StatelessWidget {
   const BooksListView({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
-import 'book_rating.dart';
+import 'book_rating_view.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
