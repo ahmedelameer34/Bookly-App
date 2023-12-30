@@ -22,7 +22,7 @@ class BookDetailsView extends StatelessWidget {
               const CustomAppBarBookDetails(),
               const BookImageView(),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               const Text(
                 'The Jungle Book ',
@@ -48,7 +48,7 @@ class BookDetailsView extends StatelessWidget {
               ),
               const BooksButtonAction(),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -58,6 +58,9 @@ class BookDetailsView extends StatelessWidget {
                     style: Styles.textStyle16,
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 15,
               ),
               const OlsoLikeListView()
               //  const OlsoLikeListView(),
