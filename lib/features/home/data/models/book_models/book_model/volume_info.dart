@@ -85,6 +85,8 @@ class VolumeInfo {
       );
 
   Map<String, dynamic> toJson() => {
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
         'title': title,
         'authors': authors,
         'publisher': publisher,
