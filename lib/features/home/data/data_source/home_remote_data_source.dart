@@ -1,6 +1,8 @@
+import 'package:flutter_bookly_app/constants.dart';
 import 'package:flutter_bookly_app/core/utils/api_services.dart';
 import 'package:flutter_bookly_app/features/home/data/models/book_models/book_model/book_model.dart';
 
+import '../../../../core/utils/save_books_data.dart';
 import '../../domain/entities/book_entity.dart';
 
 abstract class HomeRemoteDataSource {
@@ -16,6 +18,7 @@ class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
   Future<List<BookEntity>> fetchBestBooks() async {
     var data = await apiServices.get(endPoint: '?q=porgramming');
     List<BookEntity> books = getBookList(data);
+    saveBooks(books, kBestBooksBox);
     return books;
   }
 
@@ -32,6 +35,7 @@ class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
     var data =
         await apiServices.get(endPoint: '?filtering=bestseller&q=porgramming');
     List<BookEntity> books = getBookList(data);
+    saveBooks(books, kHomeBooksBox);
     return books;
   }
 }
