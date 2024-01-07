@@ -13,7 +13,9 @@ class OlsoLikeListView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const ListViewItem();
+          return const ListViewItem(
+            image: '',
+          );
         },
         itemCount: 50,
         separatorBuilder: (BuildContext context, int index) {

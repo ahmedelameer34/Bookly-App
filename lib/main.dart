@@ -18,8 +18,8 @@ import 'features/home/domain/usecases/best_books_usecase.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox(kHomeBooksBox);
-  await Hive.openBox(kBestBooksBox);
+  await Hive.openBox<BookEntity>(kHomeBooksBox);
+  await Hive.openBox<BookEntity>(kBestBooksBox);
   setupServiceLocator();
   runApp(const BooklyApp());
 }
@@ -34,11 +34,13 @@ class BooklyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) {
           return FeaturedCubit(
-              FetchFeatureBooksUseCase(getIt.get<HomeRepositryImpl>()));
+              FetchFeatureBooksUseCase(getIt.get<HomeRepositryImpl>()))
+            ..fetchFeaturedBooks();
         }),
         BlocProvider(create: (context) {
           return BestSellerCubit(
-              FetchBestSellerUseCase(getIt.get<HomeRepositryImpl>()));
+              FetchBestSellerUseCase(getIt.get<HomeRepositryImpl>()))
+            ..fetchBestSellerBooks();
         })
       ],
       child: MaterialApp.router(
