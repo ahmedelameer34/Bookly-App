@@ -35,14 +35,14 @@ class HomeRepositryImpl extends HomeRepositry {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchBestBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchBestSeller() async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.fetchBestBooks();
+      books = homeLocalDataSource.fetchBestSeller();
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchBestBooks();
+      books = await homeRemoteDataSource.fetchBestSeller();
       return right(books);
     } catch (e) {
       if (e is DioException) {

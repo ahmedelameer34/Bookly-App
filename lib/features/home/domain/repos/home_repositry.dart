@@ -4,5 +4,5 @@ import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dar
 
 abstract class HomeRepositry {
   Future<Either<Failure, List<BookEntity>>> fetchFeatureBooks();
-  Future<Either<Failure, List<BookEntity>>> fetchBestBooks();
+  Future<Either<Failure, List<BookEntity>>> fetchBestSeller();
 }

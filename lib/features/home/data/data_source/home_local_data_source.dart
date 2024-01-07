@@ -5,12 +5,12 @@ import '../../domain/entities/book_entity.dart';
 
 abstract class HomeLocalDataSource {
   List<BookEntity> fetchFeatureBooks();
-  List<BookEntity> fetchBestBooks();
+  List<BookEntity> fetchBestSeller();
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   @override
-  List<BookEntity> fetchBestBooks() {
+  List<BookEntity> fetchBestSeller() {
     var box = Hive.box<BookEntity>(kBestBooksBox);
     return box.values.toList();
   }
