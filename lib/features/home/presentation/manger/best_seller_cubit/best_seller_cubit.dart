@@ -8,9 +8,9 @@ part 'best_seller_state.dart';
 class BestSellerCubit extends Cubit<BestSellerState> {
   BestSellerCubit(this.fetchBestSellerUseCase) : super(BestSellerInitial());
   final FetchBestSellerUseCase fetchBestSellerUseCase;
-  Future<void> fetchBestSellerBooks() async {
+  Future<void> fetchBestSellerBooks({int pageNum = 0}) async {
     emit(BestSellerLoading());
-    var result = await fetchBestSellerUseCase.call();
+    var result = await fetchBestSellerUseCase.call(pageNum = pageNum);
     result.fold((failure) {
       emit(BestSellerFailure(failure.message.toString()));
     }, (books) {

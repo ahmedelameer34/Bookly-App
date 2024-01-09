@@ -12,7 +12,9 @@ class SearchResultListView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
-        return const BookListViewItem();
+        return const BookListViewItem(
+          image: '',
+        );
       },
       itemCount: 50,
       separatorBuilder: (BuildContext context, int index) {

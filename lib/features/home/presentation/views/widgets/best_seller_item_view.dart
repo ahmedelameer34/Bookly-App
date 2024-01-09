@@ -1,14 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bookly_app/core/utils/app_router.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating_view.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
-
+  const BookListViewItem({
+    super.key,
+    required this.image,
+  });
+  final String image;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,16 +23,14 @@ class BookListViewItem extends StatelessWidget {
         child: Row(
           children: [
             AspectRatio(
-              aspectRatio: 2.6 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(10),
-                    image: const DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage(AssetsData.testImage))),
-              ),
-            ),
+                aspectRatio: 2.6 / 4,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: CachedNetworkImage(
+                    imageUrl: image,
+                    fit: BoxFit.fill,
+                  ),
+                )),
             const SizedBox(
               width: 30,
             ),

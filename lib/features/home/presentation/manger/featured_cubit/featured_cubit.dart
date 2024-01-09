@@ -5,9 +5,9 @@ import 'package:flutter_bookly_app/features/home/presentation/manger/featured_cu
 class FeaturedCubit extends Cubit<FeaturedState> {
   FeaturedCubit(this.featureBooksUseCase) : super(FeaturedInitial());
   final FetchFeatureBooksUseCase featureBooksUseCase;
-  Future<void> fetchFeaturedBooks() async {
+  Future<void> fetchFeaturedBooks({int pageNum = 0}) async {
     emit(FeaturedLoading());
-    var result = await featureBooksUseCase.call();
+    var result = await featureBooksUseCase.call(pageNum);
     result.fold((failure) {
       emit(FeaturedFailure(failure.message.toString()));
     }, (books) {

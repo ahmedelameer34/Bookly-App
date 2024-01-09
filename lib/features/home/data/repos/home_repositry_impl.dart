@@ -16,7 +16,8 @@ class HomeRepositryImpl extends HomeRepositry {
       {required this.homeLocalDataSource, required this.homeRemoteDataSource});
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchFeatureBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchFeatureBooks(
+      {int pageNum = 0}) async {
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.fetchFeatureBooks();
@@ -35,7 +36,8 @@ class HomeRepositryImpl extends HomeRepositry {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchBestSeller() async {
+  Future<Either<Failure, List<BookEntity>>> fetchBestSeller(
+      {int pageNum = 0}) async {
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.fetchBestSeller();
