@@ -23,7 +23,7 @@ class BooksListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return ListViewItem(
-                  image: books[index].image ?? '',
+                  book: books[index],
                 );
               },
               itemCount: books.length,

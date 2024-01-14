@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'list_view_item_view.dart';
-
 class OlsoLikeListView extends StatelessWidget {
   const OlsoLikeListView({super.key});
 
@@ -13,9 +11,9 @@ class OlsoLikeListView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const ListViewItem(
-            image: '',
-          );
+          //  return const ListViewItem(
+          //    image: '',
+          // );
         },
         itemCount: 50,
         separatorBuilder: (BuildContext context, int index) {

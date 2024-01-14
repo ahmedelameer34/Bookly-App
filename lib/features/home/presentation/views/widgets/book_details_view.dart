@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookly_app/core/utils/styles.dart';
+import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_details_image_view.dart';
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_rating_view.dart';
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/custom_appbar_book_details_view.dart';
 
 import 'Books_button_action_view.dart';
-import 'olso_like_list_view.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
-
+  const BookDetailsView({super.key, required this.book});
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +20,14 @@ class BookDetailsView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const CustomAppBarBookDetails(),
-              const BookImageView(),
+              BookImageView(
+                bookImage: book.image!,
+              ),
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                'The Jungle Book ',
+              Text(
+                book.title,
                 style: Styles.textStyle30,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -34,7 +36,7 @@ class BookDetailsView extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                'Rudyard Kipling ',
+                book.autherName ?? '',
                 style: Styles.textStyle18.copyWith(color: Colors.grey),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -42,11 +44,16 @@ class BookDetailsView extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              const BookRating(),
+              BookRating(
+                rating: book.rating.toString(),
+                ratingCount: book.ratingCount.toString(),
+              ),
               const SizedBox(
                 height: 20,
               ),
-              const BooksButtonAction(),
+              BooksButtonAction(
+                price: book.price.toString(),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -62,7 +69,7 @@ class BookDetailsView extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              const OlsoLikeListView()
+              // const OlsoLikeListView()
               //  const OlsoLikeListView(),
             ],
           ),

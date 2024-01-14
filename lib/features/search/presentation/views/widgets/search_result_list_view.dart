@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../home/presentation/views/widgets/best_seller_item_view.dart';
-
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key});
 
@@ -12,9 +10,11 @@ class SearchResultListView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
-        return const BookListViewItem(
-          image: '',
-        );
+        return null;
+
+        // return const BookListViewItem(
+        //  image: '',
+        //  );
       },
       itemCount: 50,
       separatorBuilder: (BuildContext context, int index) {

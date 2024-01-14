@@ -1,22 +1,24 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bookly_app/core/utils/app_router.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_details_view.dart';
 
 import '../../../../../core/utils/styles.dart';
 import 'book_rating_view.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({
-    super.key,
-    required this.image,
-  });
-  final String image;
+  const BookListViewItem({super.key, required this.book});
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => BookDetailsView(
+                      book: book,
+                    )));
       },
       child: SizedBox(
         height: 125,
@@ -27,45 +29,48 @@ class BookListViewItem extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: CachedNetworkImage(
-                    imageUrl: image,
+                    imageUrl: book.image ?? '',
                     fit: BoxFit.fill,
                   ),
                 )),
             const SizedBox(
               width: 30,
             ),
-            const Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Harry Potterand the Goblet of Fire',
+                    book.title,
                     style: Styles.textStyle20,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Text(
-                    'J.K. Rowling',
+                    book.autherName ?? '',
                     style: Styles.textStyle14,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Row(
                     children: [
                       Text(
-                        '19.99 €',
+                        book.price.toString(),
                         style: Styles.textStyle20,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Spacer(),
-                      BookRating()
+                      const Spacer(),
+                      BookRating(
+                        rating: book.rating.toString(),
+                        ratingCount: book.ratingCount.toString(),
+                      )
                     ],
                   )
                 ],

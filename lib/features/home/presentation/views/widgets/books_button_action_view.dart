@@ -5,8 +5,9 @@ import '../../../../../core/utils/styles.dart';
 class BooksButtonAction extends StatelessWidget {
   const BooksButtonAction({
     super.key,
+    required this.price,
   });
-
+  final String price;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -28,7 +29,7 @@ class BooksButtonAction extends StatelessWidget {
               ),
             ),
             child: Text(
-              '19.99€',
+              '$price€',
               style: Styles.textStyle18.copyWith(color: Colors.black),
             ),
           ),
