@@ -54,4 +54,24 @@ class HomeRepositryImpl extends HomeRepositry {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchOlsoLike(
+      {int pageNum = 0}) async {
+    try {
+      List<BookEntity> books;
+      books = homeLocalDataSource.fetchOlsoLike();
+      if (books.isNotEmpty) {
+        return right(books);
+      }
+      books = await homeRemoteDataSource.fetchOlsoLike();
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDiorError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

@@ -61,7 +61,7 @@ class BookListViewItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        book.price.toString(),
+                        '${book.price.toString()} ${book.currencyCode}',
                         style: Styles.textStyle20,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

@@ -8,6 +8,7 @@ import '../../domain/entities/book_entity.dart';
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchFeatureBooks();
   Future<List<BookEntity>> fetchBestSeller();
+  Future<List<BookEntity>> fetchOlsoLike();
 }
 
 class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
@@ -16,8 +17,9 @@ class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImepl(this.apiServices);
   @override
   Future<List<BookEntity>> fetchBestSeller({int pageNum = 0}) async {
-    var data =
-        await apiServices.get(endPoint: '?q=all&stratIndex=${pageNum * 10}');
+    var data = await apiServices.get(
+        endPoint:
+            '?filtering=bestseller&q=all&stratIndex=${pageNum * 40}&maxResults=40');
     List<BookEntity> books = getBookList(data);
     saveBooks(books, kBestBooksBox);
     return books;
@@ -34,9 +36,19 @@ class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchFeatureBooks({int pageNum = 0}) async {
     var data = await apiServices.get(
-        endPoint: '?filtering=bestseller&q=all&stratIndex=${pageNum * 10}');
+        endPoint: '?q=all&stratIndex=${pageNum * 40}&maxResults=40');
     List<BookEntity> books = getBookList(data);
     saveBooks(books, kHomeBooksBox);
+    return books;
+  }
+
+  @override
+  Future<List<BookEntity>> fetchOlsoLike({int pageNum = 0}) async {
+    var data = await apiServices.get(
+        endPoint:
+            '?filtering=bestseller&q=all&stratIndex=${pageNum * 40}&maxResults=40');
+    List<BookEntity> books = getBookList(data);
+    saveBooks(books, kOlsoLikeBooksBox);
     return books;
   }
 }

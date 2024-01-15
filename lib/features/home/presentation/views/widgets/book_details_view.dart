@@ -3,9 +3,9 @@ import 'package:flutter_bookly_app/core/utils/styles.dart';
 import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_details_image_view.dart';
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_rating_view.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/books_button_action_view.dart';
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/custom_appbar_book_details_view.dart';
-
-import 'Books_button_action_view.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/olso_like_list_view.dart';
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key, required this.book});
@@ -52,11 +52,12 @@ class BookDetailsView extends StatelessWidget {
                 height: 20,
               ),
               BooksButtonAction(
-                price: book.price.toString(),
-              ),
+                  price: '${book.price.toString()} ${book.currencyCode}',
+                  bookLink: book.canonicalVolumeLink!),
               const SizedBox(
                 height: 20,
               ),
+              const Text(''),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -69,7 +70,7 @@ class BookDetailsView extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              // const OlsoLikeListView()
+              const OlsoLikeListView()
               //  const OlsoLikeListView(),
             ],
           ),

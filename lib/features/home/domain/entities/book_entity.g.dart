@@ -24,6 +24,8 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       rating: fields[5] as double?,
       bookid: fields[0] as String,
       ratingCount: fields[6] as int?,
+      currencyCode: fields[7] as String?,
+      canonicalVolumeLink: fields[8] as String?,
     );
   }
 
@@ -44,7 +46,11 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       ..writeByte(5)
       ..write(obj.rating)
       ..writeByte(6)
-      ..write(obj.ratingCount);
+      ..write(obj.ratingCount)
+      ..writeByte(7)
+      ..write(obj.currencyCode)
+      ..writeByte(7)
+      ..write(obj.canonicalVolumeLink);
   }
 
   @override

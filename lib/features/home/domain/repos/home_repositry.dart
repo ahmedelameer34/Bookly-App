@@ -6,4 +6,5 @@ abstract class HomeRepositry {
   Future<Either<Failure, List<BookEntity>>> fetchFeatureBooks(
       {int pageNum = 0});
   Future<Either<Failure, List<BookEntity>>> fetchBestSeller({int pageNum = 0});
+  Future<Either<Failure, List<BookEntity>>> fetchOlsoLike({int pageNum = 0});
 }

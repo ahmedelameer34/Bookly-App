@@ -4,7 +4,12 @@ class SaleInfo {
   bool? isEbook;
   ListPrice? listPrice;
 
-  SaleInfo({this.country, this.saleability, this.isEbook, this.listPrice});
+  SaleInfo({
+    this.country,
+    this.saleability,
+    this.isEbook,
+    this.listPrice,
+  });
 
   factory SaleInfo.fromJson(Map<String, dynamic> json) => SaleInfo(
       country: json['country'] as String?,
@@ -18,12 +23,17 @@ class SaleInfo {
         'country': country,
         'saleability': saleability,
         'isEbook': isEbook,
+        'listPrice': listPrice
       };
 }
 
 class ListPrice {
   double? amount;
-  ListPrice({this.amount});
-  factory ListPrice.fromJson(Map<String, dynamic> json) =>
-      ListPrice(amount: json['amount'] as double);
+  String? currencyCode;
+  ListPrice({this.amount, this.currencyCode});
+  factory ListPrice.fromJson(Map<String, dynamic> json) => ListPrice(
+      currencyCode: json['currencyCode'] as String?,
+      amount: json['amount'] as double);
+  Map<String, dynamic> toJson() =>
+      {'currencyCode': currencyCode, 'amount': amount};
 }

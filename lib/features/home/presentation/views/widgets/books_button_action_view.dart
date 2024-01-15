@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/web_view.dart';
 
 import '../../../../../core/utils/styles.dart';
 
 class BooksButtonAction extends StatelessWidget {
-  const BooksButtonAction({
-    super.key,
-    required this.price,
-  });
+  const BooksButtonAction(
+      {super.key, required this.price, required this.bookLink});
   final String price;
+  final String bookLink;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -29,13 +29,18 @@ class BooksButtonAction extends StatelessWidget {
               ),
             ),
             child: Text(
-              '$price€',
+              price,
               style: Styles.textStyle18.copyWith(color: Colors.black),
             ),
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WebViewScreen(bookLink)));
+          },
           child: Container(
             alignment: Alignment.center,
             width: 150,
@@ -57,9 +62,12 @@ class BooksButtonAction extends StatelessWidget {
                 )
               ],
             ),
-            child: const Text(
-              'Free preview',
-              style: Styles.textStyle16,
+            child: GestureDetector(
+              onTap: () {},
+              child: const Text(
+                'Free preview',
+                style: Styles.textStyle16,
+              ),
             ),
           ),
         )

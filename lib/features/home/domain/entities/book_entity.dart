@@ -24,13 +24,19 @@ class BookEntity {
 
   @HiveField(6)
   final int? ratingCount;
+  @HiveField(7)
+  final String? currencyCode;
+  @HiveField(8)
+  final String? canonicalVolumeLink;
 
   BookEntity(
-      {required this.image,
+      {required this.canonicalVolumeLink,
+      required this.image,
       required this.title,
       required this.autherName,
       required this.price,
       required this.rating,
       required this.bookid,
-      required this.ratingCount});
+      required this.ratingCount,
+      required this.currencyCode});
 }
