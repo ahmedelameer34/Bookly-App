@@ -6,8 +6,8 @@ import '../../../../../core/utils/styles.dart';
 class BooksButtonAction extends StatelessWidget {
   const BooksButtonAction(
       {super.key, required this.price, required this.bookLink});
-  final String price;
-  final String bookLink;
+  final String? price;
+  final String? bookLink;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -29,7 +29,7 @@ class BooksButtonAction extends StatelessWidget {
               ),
             ),
             child: Text(
-              price,
+              price!,
               style: Styles.textStyle18.copyWith(color: Colors.black),
             ),
           ),
@@ -39,7 +39,7 @@ class BooksButtonAction extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewScreen(bookLink)));
+                    builder: (context) => WebViewScreen(bookLink!)));
           },
           child: Container(
             alignment: Alignment.center,
@@ -62,12 +62,9 @@ class BooksButtonAction extends StatelessWidget {
                 )
               ],
             ),
-            child: GestureDetector(
-              onTap: () {},
-              child: const Text(
-                'Free preview',
-                style: Styles.textStyle16,
-              ),
+            child: const Text(
+              'Free preview',
+              style: Styles.textStyle16,
             ),
           ),
         )

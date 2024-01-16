@@ -6,6 +6,14 @@ final class BestSellerInitial extends BestSellerState {}
 
 final class BestSellerLoading extends BestSellerState {}
 
+final class BestSellerPaginationLoading extends BestSellerState {}
+
+class BestSellerPaginationFailure extends BestSellerState {
+  final String failure;
+
+  BestSellerPaginationFailure(this.failure);
+}
+
 final class BestSellerSuccess extends BestSellerState {
   final List<BookEntity> books;
 

@@ -9,10 +9,18 @@ class BestSellerCubit extends Cubit<BestSellerState> {
   BestSellerCubit(this.fetchBestSellerUseCase) : super(BestSellerInitial());
   final FetchBestSellerUseCase fetchBestSellerUseCase;
   Future<void> fetchBestSellerBooks({int pageNum = 0}) async {
-    emit(BestSellerLoading());
+    if (pageNum == 0) {
+      emit(BestSellerLoading());
+    } else {
+      emit(BestSellerLoading());
+    }
     var result = await fetchBestSellerUseCase.call(pageNum = pageNum);
     result.fold((failure) {
-      emit(BestSellerFailure(failure.message.toString()));
+      if (pageNum == 0) {
+        emit(BestSellerFailure(failure.message.toString()));
+      } else {
+        emit(BestSellerPaginationFailure(failure.message.toString()));
+      }
     }, (books) {
       emit(BestSellerSuccess(books));
     });

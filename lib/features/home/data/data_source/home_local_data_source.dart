@@ -11,20 +11,38 @@ abstract class HomeLocalDataSource {
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   @override
-  List<BookEntity> fetchBestSeller() {
+  List<BookEntity> fetchBestSeller({int pageNum = 0}) {
+    int startIndex = pageNum * 40;
+    int endIndex = (pageNum + 1) * 40;
     var box = Hive.box<BookEntity>(kBestBooksBox);
-    return box.values.toList();
+    int length = box.values.length;
+    if (startIndex >= length || endIndex > length) {
+      return [];
+    }
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 
   @override
-  List<BookEntity> fetchFeatureBooks() {
+  List<BookEntity> fetchFeatureBooks({int pageNum = 0}) {
+    int startIndex = pageNum * 40;
+    int endIndex = (pageNum + 1) * 40;
     var box = Hive.box<BookEntity>(kHomeBooksBox);
-    return box.values.toList();
+    int length = box.values.length;
+    if (startIndex >= length || endIndex > length) {
+      return [];
+    }
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 
   @override
-  List<BookEntity> fetchOlsoLike() {
+  List<BookEntity> fetchOlsoLike({int pageNum = 0}) {
+    int startIndex = pageNum * 40;
+    int endIndex = (pageNum + 1) * 40;
     var box = Hive.box<BookEntity>(kOlsoLikeBooksBox);
-    return box.values.toList();
+    int length = box.values.length;
+    if (startIndex >= length || endIndex > length) {
+      return [];
+    }
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 }

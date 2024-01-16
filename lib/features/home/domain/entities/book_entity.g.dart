@@ -17,6 +17,7 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return BookEntity(
+      canonicalVolumeLink: fields[8] as String?,
       image: fields[1] as String?,
       title: fields[2] as String,
       autherName: fields[3] as String?,
@@ -25,14 +26,13 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       bookid: fields[0] as String,
       ratingCount: fields[6] as int?,
       currencyCode: fields[7] as String?,
-      canonicalVolumeLink: fields[8] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BookEntity obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.bookid)
       ..writeByte(1)
@@ -49,7 +49,7 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       ..write(obj.ratingCount)
       ..writeByte(7)
       ..write(obj.currencyCode)
-      ..writeByte(7)
+      ..writeByte(8)
       ..write(obj.canonicalVolumeLink);
   }
 
