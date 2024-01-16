@@ -26,7 +26,7 @@ class BookModel extends BookEntity {
     this.searchInfo,
   }) : super(
             canonicalVolumeLink: volumeInfo!.canonicalVolumeLink ?? '',
-            currencyCode: saleInfo?.listPrice?.currencyCode ?? '',
+            currencyCode: saleInfo?.listPrice?.currencyCode ?? 'EGP',
             image: volumeInfo.imageLinks?.thumbnail ??
                 'http://books.google.com/books/content?id=JEDbCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
             //test image

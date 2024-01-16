@@ -12,7 +12,7 @@ class SearchResultListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return null;
 
-        // return const BookListViewItem(
+        //   const BookListViewItem(
         //  image: '',
         //  );
       },
