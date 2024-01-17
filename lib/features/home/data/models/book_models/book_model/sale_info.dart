@@ -33,7 +33,7 @@ class ListPrice {
   ListPrice({this.amount, this.currencyCode});
   factory ListPrice.fromJson(Map<String, dynamic> json) => ListPrice(
       currencyCode: json['currencyCode'] as String?,
-      amount: json['amount'] as double);
+      amount: (json['amount']).toDouble());
   Map<String, dynamic> toJson() =>
       {'currencyCode': currencyCode, 'amount': amount};
 }

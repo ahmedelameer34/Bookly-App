@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
-import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_details_view.dart';
+
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_details_widgets/book_details_view.dart';
 
 class ListViewItem extends StatelessWidget {
   const ListViewItem({

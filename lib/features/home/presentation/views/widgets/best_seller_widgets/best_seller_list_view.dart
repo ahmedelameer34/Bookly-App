@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
+
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/best_seller_widgets/best_seller_item_view.dart';
 
-class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key, required this.books});
+class BestSellerListView extends StatelessWidget {
+  const BestSellerListView({super.key, required this.books});
   final List<BookEntity> books;
+
+  // late final  ScrollController _scrollController;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
         return BookListViewItem(
-          image: books[index].image,
           book: books[index],
         );
       },

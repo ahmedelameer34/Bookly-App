@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_bookly_app/features/search/data/data_source/remote_data_source.dart';
+import 'package:flutter_bookly_app/features/search/data/repos/search_repositry_imp.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/home/data/data_source/home_local_data_source.dart';
@@ -13,4 +15,8 @@ void setupServiceLocator() {
       homeLocalDataSource: HomeLocalDataSourceImpl(),
       homeRemoteDataSource:
           HomeRemoteDataSourceImepl(getIt.get<ApiServices>())));
+
+  getIt.registerSingleton(SearchRepositryImpl(
+      searchRemoteDataSource:
+          SearchRemoteDataSourceImp(apiServices: getIt.get<ApiServices>())));
 }

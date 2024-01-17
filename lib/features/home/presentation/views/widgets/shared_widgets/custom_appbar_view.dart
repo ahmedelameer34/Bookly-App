@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bookly_app/core/utils/app_router.dart';
+import 'package:flutter_bookly_app/core/utils/assets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../../core/utils/app_router.dart';
-import '../../../../../core/utils/assets.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({

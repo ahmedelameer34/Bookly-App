@@ -12,7 +12,7 @@ class BestSellerCubit extends Cubit<BestSellerState> {
     if (pageNum == 0) {
       emit(BestSellerLoading());
     } else {
-      emit(BestSellerLoading());
+      emit(BestSellerPaginationLoading());
     }
     var result = await fetchBestSellerUseCase.call(pageNum = pageNum);
     result.fold((failure) {

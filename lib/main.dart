@@ -4,10 +4,8 @@ import 'package:flutter_bookly_app/constants.dart';
 import 'package:flutter_bookly_app/core/utils/app_router.dart';
 import 'package:flutter_bookly_app/features/home/data/repos/home_repositry_impl.dart';
 import 'package:flutter_bookly_app/features/home/domain/usecases/feature_books_usecase.dart';
-import 'package:flutter_bookly_app/features/home/domain/usecases/olso_like_usecase.dart';
 import 'package:flutter_bookly_app/features/home/presentation/manger/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flutter_bookly_app/features/home/presentation/manger/featured_cubit/featured_cubit.dart';
-import 'package:flutter_bookly_app/features/home/presentation/manger/olso_like_Cubit/olso_like_cubit.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -45,11 +43,6 @@ class BooklyApp extends StatelessWidget {
               FetchBestSellerUseCase(getIt.get<HomeRepositryImpl>()))
             ..fetchBestSellerBooks();
         }),
-        BlocProvider(create: (context) {
-          return OlsoLikeCubit(
-              FetchOlsoLikeUseCase(getIt.get<HomeRepositryImpl>()))
-            ..fetchOlsoLikeBooks();
-        })
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,

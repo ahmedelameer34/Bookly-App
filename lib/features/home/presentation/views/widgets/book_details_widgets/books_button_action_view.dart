@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bookly_app/features/home/presentation/views/widgets/web_view.dart';
-
-import '../../../../../core/utils/styles.dart';
+import 'package:flutter_bookly_app/core/utils/styles.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_details_widgets/web_view.dart';
 
 class BooksButtonAction extends StatelessWidget {
   const BooksButtonAction(

@@ -1,14 +1,14 @@
 import 'package:flutter_bookly_app/constants.dart';
 import 'package:flutter_bookly_app/core/utils/api_services.dart';
+import 'package:flutter_bookly_app/core/utils/save_books_data.dart';
 import 'package:flutter_bookly_app/features/home/data/models/book_models/book_model/book_model.dart';
 
-import '../../../../core/utils/save_books_data.dart';
 import '../../domain/entities/book_entity.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchFeatureBooks();
-  Future<List<BookEntity>> fetchBestSeller();
-  Future<List<BookEntity>> fetchOlsoLike();
+  Future<List<BookEntity>> fetchFeatureBooks({int pageNum = 0});
+  Future<List<BookEntity>> fetchBestSeller({int pageNum = 0});
+  Future<List<BookEntity>> fetchOlsoLike({int pageNum = 0});
 }
 
 class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
@@ -19,7 +19,7 @@ class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
   Future<List<BookEntity>> fetchBestSeller({int pageNum = 0}) async {
     var data = await apiServices.get(
         endPoint:
-            '?filtering=best_seller&q=hacking&startIndex=${pageNum * 40}&maxResults=40');
+            '?filtering=bestseller&q=hacking&startIndex=${pageNum * 10}&maxResults=10');
     List<BookEntity> books = getBookList(data);
     saveBooks(books, kBestBooksBox);
     return books;
@@ -36,7 +36,7 @@ class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchFeatureBooks({int pageNum = 0}) async {
     var data = await apiServices.get(
-        endPoint: '?q=programming&startIndex=${pageNum * 40}&maxResults=40');
+        endPoint: '?q=programming&startIndex=${pageNum * 10}&maxResults=10');
     List<BookEntity> books = getBookList(data);
     saveBooks(books, kHomeBooksBox);
     return books;
@@ -46,7 +46,7 @@ class HomeRemoteDataSourceImepl extends HomeRemoteDataSource {
   Future<List<BookEntity>> fetchOlsoLike({int pageNum = 0}) async {
     var data = await apiServices.get(
         endPoint:
-            '?filtering=best_seller&q=porgramming&startIndex=${pageNum * 40}&maxResults=40');
+            '?filtering=bestseller&q=porgramming&startIndex=${pageNum * 10}&maxResults=10');
     List<BookEntity> books = getBookList(data);
     saveBooks(books, kOlsoLikeBooksBox);
     return books;

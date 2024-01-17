@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter_bookly_app/features/home/presentation/manger/best_seller_cubit/best_seller_cubit.dart';
-import 'package:flutter_bookly_app/features/home/presentation/views/widgets/best_seller_list_view.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/best_seller_widgets/best_seller_books_list_view_loading_indicator.dart';
+
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/best_seller_widgets/best_seller_list_view.dart';
 
 class BestSellerListViewBlocBuilder extends StatefulWidget {
   const BestSellerListViewBlocBuilder({
@@ -41,7 +43,7 @@ class _BestSellerListViewBlocBuilderState
         } else if (state is BestSellerFailure) {
           return Text(state.failure);
         } else {
-          return const CircularProgressIndicator();
+          return const BestBooksListViewLoadingIndicator();
         }
       },
     );

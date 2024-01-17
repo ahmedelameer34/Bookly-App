@@ -20,11 +20,11 @@ class HomeRepositryImpl extends HomeRepositry {
       {int pageNum = 0}) async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.fetchFeatureBooks();
+      books = homeLocalDataSource.fetchFeatureBooks(pageNum: pageNum);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchFeatureBooks();
+      books = await homeRemoteDataSource.fetchFeatureBooks(pageNum: pageNum);
       return right(books);
     } catch (e) {
       if (e is DioException) {
@@ -40,11 +40,11 @@ class HomeRepositryImpl extends HomeRepositry {
       {int pageNum = 0}) async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.fetchBestSeller();
+      books = homeLocalDataSource.fetchBestSeller(pageNum: pageNum);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchBestSeller();
+      books = await homeRemoteDataSource.fetchBestSeller(pageNum: pageNum);
       return right(books);
     } catch (e) {
       if (e is DioException) {
@@ -60,11 +60,11 @@ class HomeRepositryImpl extends HomeRepositry {
       {int pageNum = 0}) async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.fetchOlsoLike();
+      books = homeLocalDataSource.fetchOlsoLike(pageNum: pageNum);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchOlsoLike();
+      books = await homeRemoteDataSource.fetchOlsoLike(pageNum: pageNum);
       return right(books);
     } catch (e) {
       if (e is DioException) {

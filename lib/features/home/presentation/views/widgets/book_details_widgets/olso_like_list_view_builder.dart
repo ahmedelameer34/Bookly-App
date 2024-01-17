@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
 
 import 'package:flutter_bookly_app/features/home/presentation/manger/olso_like_Cubit/olso_like_cubit.dart';
-import 'package:flutter_bookly_app/features/home/presentation/views/widgets/olso_like_list_view.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book_details_widgets/olso_like_list_view.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/featured_widgets/featured_books_list_view_loading_indicator.dart';
 
 class OlsoLikeListViewBlocBuilder extends StatefulWidget {
   const OlsoLikeListViewBlocBuilder({
@@ -41,7 +42,7 @@ class _OlsoLikeListViewBlocBuilderState
         } else if (state is OlsoLikeFailure) {
           return Text(state.failure);
         } else {
-          return const CircularProgressIndicator();
+          return const BooksListViewLoadingIndicator();
         }
       },
     );

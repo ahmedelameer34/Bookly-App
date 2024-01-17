@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter_bookly_app/features/home/presentation/manger/featured_cubit/featured_cubit.dart';
 import 'package:flutter_bookly_app/features/home/presentation/manger/featured_cubit/featured_state.dart';
-import 'package:flutter_bookly_app/features/home/presentation/views/widgets/books_list_view.dart';
+
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/featured_widgets/featured_books_list_view_loading_indicator.dart';
+import 'package:flutter_bookly_app/features/home/presentation/views/widgets/featured_widgets/books_list_view.dart';
 
 class FeatuedBooksListViewBlocBuilder extends StatefulWidget {
   const FeatuedBooksListViewBlocBuilder({
@@ -42,7 +44,7 @@ class _FeatuedBooksListViewBlocBuilderState
         } else if (state is FeaturedFailure) {
           return Text(state.failure);
         } else {
-          return const CircularProgressIndicator();
+          return const BooksListViewLoadingIndicator();
         }
       },
     );

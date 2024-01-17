@@ -11,7 +11,7 @@ class OlsoLikeCubit extends Cubit<OlsoLikeState> {
     if (pageNum == 0) {
       emit(OlsoLikeLoading());
     } else {
-      emit(OlsoLikeLoading());
+      emit(OlsoLikePaginationLoading());
     }
     var result = await fetchOlsoLikeUseCase.call(pageNum = pageNum);
     result.fold((failure) {

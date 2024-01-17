@@ -9,7 +9,7 @@ class FeaturedCubit extends Cubit<FeaturedState> {
     if (pageNum == 0) {
       emit(FeaturedLoading());
     } else {
-      emit(FeaturedLoading());
+      emit(FeaturedPaginationLoading());
     }
 
     var result = await featureBooksUseCase.call(pageNum);
