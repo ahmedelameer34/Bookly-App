@@ -7,7 +7,10 @@ import 'package:flutter_bookly_app/features/home/presentation/views/widgets/book
 import 'package:flutter_bookly_app/features/home/presentation/views/widgets/shared_widgets/book_rating_view.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key, required this.book, String? image});
+  const BookListViewItem({
+    super.key,
+    required this.book,
+  });
   final BookEntity book;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class BookListViewItem extends StatelessWidget {
                     )));
       },
       child: SizedBox(
-        height: 125,
+        height: 150,
         child: Row(
           children: [
             AspectRatio(
@@ -29,7 +32,7 @@ class BookListViewItem extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: CachedNetworkImage(
-                    imageUrl: book.image ?? '',
+                    imageUrl: book.image!,
                     fit: BoxFit.fill,
                   ),
                 )),
@@ -43,7 +46,7 @@ class BookListViewItem extends StatelessWidget {
                   Text(
                     book.title,
                     style: Styles.textStyle20,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(
@@ -58,6 +61,7 @@ class BookListViewItem extends StatelessWidget {
                   const SizedBox(
                     height: 3,
                   ),
+                  const Spacer(),
                   Row(
                     children: [
                       Text(
@@ -74,7 +78,10 @@ class BookListViewItem extends StatelessWidget {
                         ratingCount: book.ratingCount.toString(),
                       )
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                 ],
               ),
             )

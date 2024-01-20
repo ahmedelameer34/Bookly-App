@@ -13,7 +13,6 @@ class SearchResultListView extends StatelessWidget {
       scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
         return BookListViewItem(
-          image: books[index].image,
           book: books[index],
         );
       },

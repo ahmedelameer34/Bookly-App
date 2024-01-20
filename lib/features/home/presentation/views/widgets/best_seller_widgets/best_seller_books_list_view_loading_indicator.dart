@@ -10,7 +10,7 @@ class BestBooksListViewLoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomFadingWidget(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * .3,
+        height: MediaQuery.of(context).size.height * .25,
         child: ListView.builder(
           itemCount: 15,
           scrollDirection: Axis.vertical,
