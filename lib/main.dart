@@ -6,6 +6,7 @@ import 'package:flutter_bookly_app/features/home/data/repos/home_repositry_impl.
 import 'package:flutter_bookly_app/features/home/domain/usecases/feature_books_usecase.dart';
 import 'package:flutter_bookly_app/features/home/presentation/manger/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flutter_bookly_app/features/home/presentation/manger/featured_cubit/featured_cubit.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,7 +16,9 @@ import 'core/utils/service_locator.dart';
 import 'features/home/domain/entities/book_entity.dart';
 import 'features/home/domain/usecases/best_books_usecase.dart';
 
-void main() async {
+Future<void> main() async { 
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox<BookEntity>(kHomeBooksBox);
