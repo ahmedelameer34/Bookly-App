@@ -1,16 +1,74 @@
-# flutter_bookly_app
+# 📚 Bookly App  
+A clean and modern Flutter application for browsing, previewing, and managing books — built using **Clean Architecture**, **Cubit**, **Dio**, and **Hive** for offline caching.
 
-A new Flutter project.
+---
 
-## Getting Started
+## 📸 Screenshots
+### Main Screens
+| Home | Books List | Book Details |
+|------|------------|--------------|
+| <img src="screenshots/screenshot2.png" width="250"/> | <img src="screenshots/screenshot3.png" width="250"/> | <img src="screenshots/screenshot4.png" width="250"/> |
 
-This project is a starting point for a Flutter application.
+### Additional Screen
+| Another View |
+|--------------|
+| <img src="screenshots/screenshot1.png" width="250"/> |
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🚀 Overview  
+**Bookly App** is a Flutter-based books application that fetches and displays book data from an API.  
+It supports fast performance with offline caching using Hive, a clean and scalable architecture, and state management using Cubit.
+
+---
+
+## ✨ Features
+- 🔍 Display featured books  
+- 📖 Show Best Sellers  
+- 📚 Detailed book view with rating and author  
+- ⭐ “You may also like” book recommendations  
+- ⚡ Offline caching using **Hive**  
+- 🧱 Structured using **Clean Architecture**  
+- 🛰️ API integration using **Dio**  
+- 💙 State management using **Cubit**  
+- 🎨 Smooth UI with animations
+
+---
+
+## 🛠 Tech Stack
+- **Flutter**
+- **Cubit (Bloc)** — State management  
+- **Dio** — REST API client  
+- **Hive** — Local storage and caching  
+- **Clean Architecture** (Data — Domain — Presentation)
+
+---
+
+## 📁 Project Structure
+```text
+lib/
+ ├── core/
+ │    ├── baseUseCase/
+ │    ├── errors/
+ │    └── utils/
+ ├── features/
+ │    ├── home/
+ │    │    ├── data/
+ │    │    │    ├── data_source/
+ │    │    │    └── models/
+ │    │    ├── domain/
+ │    │    │    ├── entities/
+ │    │    │    ├── repos/
+ │    │    │    └── usecases/
+ │    │    └── presentation/
+ │    │         ├── manager/
+ │    │         │    ├── best_seller_cubit/
+ │    │         │    ├── featured_cubit/
+ │    │         │    └── also_like_cubit/
+ │    │         └── views/
+ ├── splash/
+ ├── bookly_app.dart
+ ├── constants.dart
+ └── main.dart
