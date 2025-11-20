@@ -12,7 +12,7 @@ A clean and modern Flutter application for browsing, previewing, and managing bo
 ### Additional Screen
 | Project Structure |
 |--------------|
-| <img src="screenshots/screenshot1.png" width="250"/> |
+| <img src="screenshots/screenshot.png" width="250"/> |
 
 
 
